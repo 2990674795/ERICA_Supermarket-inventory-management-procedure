@@ -117,7 +117,7 @@ System.out.println("-----------상품재고-----------");
 for(int i =0 ; i < array.size(); i++) {
 	Supermarket item = array.get(i);
 	System.out.println("--상품번호:" + item.ID+"   "+"--상품명:"+ item.name+"   "+"--상품단가:"+ item.price +"  " +  "--상품 수량:"+ item.number + "  " + "--상품총금액:" + item.money);
-}
+	}
 }
 
 
@@ -128,25 +128,25 @@ for(int i =0 ; i < array.size(); i++) {
 public static void addFruit(ArrayList<Supermarket> array){
 System.out.println("선택한 것은 상품을 추가하는 기능입니다:");
 
-Scanner sc = new Scanner(System.in);
-System.out.println("상품의 번호를 입력해 주세요:");
-int ID = sc.nextInt();
-System.out.println("상품의 이름을 입력해 주세요:");
-String name = sc.next();
-System.out.println("상품의 단가를 입력하다:");
-double price = sc.nextDouble();
-System.out.println("상품의 수량을 입력해 주세요:");
-int number = sc.nextInt();
-//double money = sc.nextDouble();
-double money = price * number;
-Supermarket item = new Supermarket();
-item.ID = ID;
-item.name = name;
-item.price = price;
-item.number = number;
-item.money = money;
-array.add(item);
-System.out.println("상품 추가 성공");
+	Scanner sc = new Scanner(System.in);
+	System.out.println("상품의 번호를 입력해 주세요:");
+	int ID = sc.nextInt();
+	System.out.println("상품의 이름을 입력해 주세요:");
+	String name = sc.next();
+	System.out.println("상품의 단가를 입력하다:");
+	double price = sc.nextDouble();
+	System.out.println("상품의 수량을 입력해 주세요:");
+	int number = sc.nextInt();
+	//double money = sc.nextDouble();
+	double money = price * number;
+	Supermarket item = new Supermarket();
+	item.ID = ID;
+	item.name = name;
+	item.price = price;
+	item.number = number;
+	item.money = money;
+	array.add(item);
+	System.out.println("상품 추가 성공");
 }
 
 
@@ -194,17 +194,36 @@ for(int i = 0 ; i < array.size(); i++) {
 //		
 //		System.out.println("输入新的商品名字");
 //		item.name = sc.next();
-		
+		System.out.println("기능 1:제품 속성 수정 2:당일의 영업 상황");
+		Scanner xx = new Scanner(System.in);
+		int input = xx.nextInt();
+		if(input == 1 ) {
 		System.out.println("새 상품 가격 입력:");
 		item.price = sc.nextDouble();
 		
 		System.out.println("상품의 수량을 입력해 주세요:");
 		item.number = sc.nextInt();
+		}
+		if(input == 2) {
+			System.out.println("기능 1:상품을 증가 2:상품을 감소");
+			Scanner ww = new Scanner(System.in);
+			int xuanze = ww.nextInt();
+			if(xuanze == 1) {
+				System.out.println("얼마나 증가되었는가");
+				item.number = sc.nextInt() + item.number;
+			}
+			if(xuanze == 2) {
+				System.out.println("얼마나 감소되었는가");
+				item.number = item.number- sc.nextInt();
+			}
+			
+		}
+
 		System.out.println("상품 수정에 성공하다");
 		item.money = item.number * item.price; //
 		return ;
 	}
 }
 System.out.println("입력한 번호가 존재하지 않음");
-}
+	}
 }
